@@ -33,3 +33,6 @@
 
 # Emacs temp files
 *~
+
+#Root Cern temp files
+file.txt
