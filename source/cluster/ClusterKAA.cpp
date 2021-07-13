@@ -9,11 +9,11 @@ ClusterKAA::ClusterKAA()
 }
 
 ClusterKAA::ClusterKAA(MpdEmcClusterKI* cluster)
-  : x{ cluster.GetX() },
-  y{ cluster.GetY() },
-  z{ cluster.GetZ() },
-  dz{ cluster.GetDZ() },
-  dphi{ cluster.GetDPhi() },
+  : x{ cluster -> GetX() },
+  y{ cluster -> GetY() },
+  z{ cluster -> GetZ() },
+  dz{ cluster -> GetDZ() },
+  dphi{ cluster -> GetDPhi() },
   t{ 9999 },
   dt{ 9999 },
   dt_blur{ 9999 }
