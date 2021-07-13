@@ -1,13 +1,23 @@
-#include "../source/cluster/ClusterKAA.cpp"
+//C++
+#include <iostream>
+//ROOT CERN
+#include "TChain.h"
+#include "TObjArray.h"
+#include "TClonesArray.h"
+//MPDROOT
 
+
+R__LOAD_LIBRARY(../source/cluster/ClusterKAA_cpp.so)
 int TestRunScript()
 {
+  // Чтение файла с реконструкцией
   string dir_data = "/eos/nica/mpd/sim/data/exp/dst-BiBi-09.2GeV-mp05-21-500ev/BiBi/09.2GeV-mb/UrQMD/BiBi-09.2GeV-mp05-21-500ev/";
   string data_file = dir_data + "urqmd-BiBi-09.2GeV-mb-eos0-500-11801.reco.root";
 
   TChain* Read_Chain = new TChain("mpdsim");
   Read_Chain -> Add(data_file.c_str());
   
+  // Инициализация переменных, которые будут браться из файла
   TObjArray* Clusters = nullptr;
   TClonesArray* MCStack = nullptr;
   TClonesArray* KalmanStack = nullptr;
@@ -19,9 +29,10 @@ int TestRunScript()
   Read_Chain -> SetBranchAddress("MCEventHeader.", &MCEventHeader);
   Read_Chain -> SetBranchAddress("TpcKalmanTrack", &KalmanStack);
 
-  
+  // Тестовые гистограммы
   TH1D* h_dz_all_test = new TH1D("h_dz_all_test","h_dz_all_test", 400, -200, 200);
   
+  //Запуск цикла
   for (int i = 0; i < Read_Chain -> GetEntries(); i++)
     {
       std::cout << i << std::endl;
