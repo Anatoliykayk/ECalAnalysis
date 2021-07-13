@@ -6,7 +6,7 @@ class ClusterKAA
 {
  public:
   ClusterKAA();
-  ClusterKAA(MpdEmcClusterKI& cluster);
+  ClusterKAA(MpdEmcClusterKI* cluster);
   
   TVector3 GetXYZ() const;
   double GetDZ() const;

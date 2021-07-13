@@ -8,7 +8,7 @@ ClusterKAA::ClusterKAA()
 {
 }
 
-ClusterKAA::ClusterKAA(MpdEmcClusterKI& cluster)
+ClusterKAA::ClusterKAA(MpdEmcClusterKI* cluster)
   : x{ cluster.GetX() },
   y{ cluster.GetY() },
   z{ cluster.GetZ() },
@@ -18,7 +18,7 @@ ClusterKAA::ClusterKAA(MpdEmcClusterKI& cluster)
   dt{ 9999 },
   dt_blur{ 9999 }
 {
-  cluster.GetLambdas( disp_long, disp_short );
+  cluster -> GetLambdas( disp_long, disp_short );
 }
 
 TVector3 ClusterKAA::GetXYZ() const
