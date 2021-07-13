@@ -36,3 +36,4 @@
 
 #Root Cern temp files
 file.txt
+*.root
